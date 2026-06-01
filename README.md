@@ -1,3 +1,5 @@
+[![Build Validation](https://github.com/Ermolz69/todo-app/actions/workflows/build.yml/badge.svg)](https://github.com/Ermolz69/todo-app/actions/workflows/build.yml)
+
 # Microsoft To-Do Clone
 
 A simple full-stack task management application inspired by Microsoft To Do.
