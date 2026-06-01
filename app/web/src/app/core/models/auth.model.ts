@@ -1,0 +1,21 @@
+export interface AuthResponse {
+  accessToken: string;
+  refreshToken: string;
+  user: User;
+}
+
+export interface User {
+  id: string;
+  email: string;
+}
+
+export interface LoginRequest {
+  email: string;
+  password?: string;
+}
+
+export interface RegisterRequest {
+  email: string;
+  userName: string;
+  password?: string;
+}

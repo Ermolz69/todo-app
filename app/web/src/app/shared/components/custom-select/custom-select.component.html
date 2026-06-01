@@ -1,0 +1,39 @@
+<div class="relative w-full">
+  <button 
+    type="button" 
+    (click)="toggleDropdown()" 
+    [disabled]="isDisabled"
+    class="w-full flex items-center justify-between px-4 py-2.5 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-slate-50 transition-colors"
+    [ngClass]="{
+      'bg-white ring-2 ring-indigo-500 border-indigo-500': isOpen,
+      'opacity-50 cursor-not-allowed': isDisabled
+    }">
+    <span class="block truncate" [ngClass]="{'text-slate-500': value === null || value === ''}">
+      {{ selectedLabel }}
+    </span>
+    <svg class="w-5 h-5 text-slate-400 pointer-events-none transition-transform" [ngClass]="{'rotate-180': isOpen}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </button>
+
+  @if (isOpen) {
+    <ul class="absolute z-10 w-full bg-white shadow-lg max-h-60 rounded-xl border border-slate-100 py-1 text-sm overflow-auto"
+        [ngClass]="{
+          'mt-2 top-full origin-top animate-fade-in-up': dropdownPosition === 'bottom',
+          'mb-2 bottom-full origin-bottom animate-fade-in-down shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.1)]': dropdownPosition === 'top'
+        }">
+      @if (options.length === 0) {
+        <li class="px-4 py-2 text-slate-400 text-center">No options available</li>
+      }
+      @for (option of options; track option.value) {
+        <li 
+          (click)="selectOption(option)" 
+          class="cursor-pointer select-none relative px-4 py-2.5 hover:bg-indigo-50 transition-colors flex items-center justify-between group"
+          [ngClass]="{'bg-indigo-50 text-indigo-600 font-medium': value === option.value}">
+          <span class="block truncate">{{ option.label }}</span>
+          @if (value === option.value) {
+            <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          }
+        </li>
+      }
+    </ul>
+  }
+</div>

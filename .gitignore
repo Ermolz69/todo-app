@@ -1,0 +1,28 @@
+# .gitignore
+# Visual Studio / .NET
+[Oo]bj/
+[Bb]in/
+.vs/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.sln.docstates
+appsettings.Development.json
+.vscode/
+
+# Node / Angular / Frontend
+node_modules/
+dist/
+.angular/
+npm-debug.log
+yarn-error.log
+.env
+.env.*
+!.env.example
+coverage/
+
+# General
+.DS_Store
+Thumbs.db
+*.log
